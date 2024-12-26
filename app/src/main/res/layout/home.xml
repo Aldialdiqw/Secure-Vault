@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:text="Secure Vault"
+            android:background="?android:attr/colorBackground"
+            android:fontFamily="@font/montserrat"
+            android:textSize="28sp"
+
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="#E1BEE7"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardWallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat"
+            android:background="?android:attr/colorBackground"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/colorBackground"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="My Wallet"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <GridLayout
+                    android:id="@+id/passwords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:columnCount="3">
+
+                    <!-- Credit/debit cards -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="#E1BEE7"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp">
+
+
+                            <ImageView
+                                android:id="@+id/cards"
+                                android:layout_width="35dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Credit/debit cards"
+                                android:src="@drawable/credit_card"
+                                app:tint="#E1BEE7" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Credit/Debit\nCards"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="#E1BEE7"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp">
+
+                            <ImageView
+                                android:id="@+id/memberships"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Memberships"
+                                android:src="@drawable/membership"
+                                app:tint="#E1BEE7" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Memberships"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Vouchers -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="#E1BEE7"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp"
+                            app:tint="#E1BEE7">
+
+                            <ImageView
+                                android:id="@+id/Secure_Notes"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Vouchers"
+                                android:src="@drawable/vouchers"
+                                app:tint="#E1BEE7" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Secure Notes"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Passwords -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="?android:attr/colorBackground"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp">
+
+                            <ImageView
+                                android:id="@+id/password"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Pass"
+                                android:src="@drawable/password"
+                                app:tint="#E1BEE7" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Passwords"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Personal IDs -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="?android:attr/colorBackground"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp">
+
+                            <ImageView
+                                android:id="@+id/personal_ids"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Personal id"
+                                android:src="@drawable/id_card"
+                                app:tint="#E1BEE7" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Personal IDs"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Other data -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="?android:attr/colorBackground"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp">
+
+                            <ImageView
+                                android:id="@+id/other"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Other"
+                                android:src="@drawable/other"
+                                app:tint="#E1BEE7" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Other"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </GridLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card2FASection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardWallet">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="?android:attr/colorBackground"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Two Factor Authentication"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Enable extra security for your vault"
+                    android:textSize="14sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/FA2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="2FA"
+                    app:icon="@drawable/ic_delete"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Logout"
+            android:fontFamily="@font/montserrat"
+            android:textSize="16sp"
+            android:padding="12dp"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card2FASection"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
