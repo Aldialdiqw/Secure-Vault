@@ -1,0 +1,40 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Lock body -->
+    <path
+        android:fillColor="@color/purple_200"
+        android:strokeColor="@color/purple_200"
+        android:strokeWidth="2"
+        android:pathData="M54,28c-11,0 -20,9 -20,20v10h-4v30h48v-30h-4v-10c0,-11 -9,-20 -20,-20zM54,38c5.5,0 10,4.5 10,10v10h-20v-10c0,-5.5 4.5,-10 10,-10z" />
+
+    <!-- Keyhole -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,68m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+
+    <!-- Password dots -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,80m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,80m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,80m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M70,80m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+
+    <!-- Shield outline -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M54,20 L30,30 L30,50 C30,65 40,78 54,85 C68,78 78,65 78,50 L78,30 Z" />
+</vector>
+
