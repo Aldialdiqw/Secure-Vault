@@ -14,6 +14,8 @@ import com.example.app2.GLOBAL;
 import com.example.app2.R;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.regex.Pattern;
+
 import database.DatabaseHelper;
 
 public class ResetPasswordActivity extends AppCompatActivity {
@@ -51,7 +53,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
             Toast.makeText(this, "Both fields are required", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        if (!isValidPassword(newPassword)) {
+            Toast.makeText(ResetPasswordActivity.this, "Password must contain at least one uppercase letter, one number a symbol and it should be at least 8 charachters long", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!newPassword.equals(confirmPassword)) {
             Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             return;
@@ -81,4 +86,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
             Toast.makeText(this, "Error resetting password. User not found.", Toast.LENGTH_SHORT).show();
         }
     }
+    private boolean isValidPassword(String password) {
+
+        Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*\\d)(?=.*\\W).{8,}$");
+        return pattern.matcher(password).matches();
+    }
+
 }

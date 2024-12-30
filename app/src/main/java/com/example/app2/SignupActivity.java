@@ -51,7 +51,7 @@ public class SignupActivity extends AppCompatActivity {
             } else if (pass.length() < 6) {
                 Toast.makeText(SignupActivity.this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
             } else if (!isValidPassword(pass)) {
-                Toast.makeText(SignupActivity.this, "Password must contain at least one uppercase letter and one number", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Password must contain at least one uppercase letter, one number a symbol and it should be at least 8 charachters long", Toast.LENGTH_SHORT).show();
             } else if (!pass.equals(confirmPass)) {
                 Toast.makeText(SignupActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             } else {
@@ -86,7 +86,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean isValidPassword(String password) {
 
-        Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*\\d).+$");
+        Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*\\d)(?=.*\\W).{8,}$");
         return pattern.matcher(password).matches();
     }
 

@@ -29,13 +29,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private SharedPreferences sharedPreferences;
-
+    private int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
         GLOBAL.enableImmersiveMode(this);
-
+        count=0;
         dbHelper = new DatabaseHelper(this);
         sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
 
@@ -83,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     } else {
                         try {
-                            Thread.sleep(1000);
+                            count++;
+                            Thread.sleep(1000L *count);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
