@@ -104,8 +104,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 if (currentDate.get(Calendar.YEAR) == paymentCalendar.get(Calendar.YEAR)
                         && currentDate.get(Calendar.DAY_OF_YEAR) == paymentCalendar.get(Calendar.DAY_OF_YEAR)) {
-                    paymentCalendar.add(Calendar.DAY_OF_MONTH, -1); // Reset to original date
-                    paymentCalendar.add(Calendar.MONTH, 1);
+                    paymentCalendar.add(Calendar.DAY_OF_MONTH, -1);
+                    paymentCalendar.add(Calendar.DAY_OF_MONTH, 30);
                     String newDate = sdf.format(paymentCalendar.getTime());
                     membership.setPaymentDate(newDate);
                     dbHelper.updateMembershipPaymentDate(membership.getId(), newDate);
