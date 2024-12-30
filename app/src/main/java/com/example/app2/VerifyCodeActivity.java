@@ -23,7 +23,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
         EditText codeInput = findViewById(R.id.code_input);
         Button btnVerify = findViewById(R.id.btn_verify);
 
-        // Get the passed data
+
         String email = getIntent().getStringExtra("email");
         String expectedCode = getIntent().getStringExtra("code");
 
@@ -36,7 +36,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
             }
 
             if (enteredCode.equals(expectedCode)) {
-                // Navigate to ResetPasswordActivity
+
                 Intent intent = new Intent(VerifyCodeActivity.this, ResetPasswordActivity.class);
                 intent.putExtra("email", email);
                 startActivity(intent);

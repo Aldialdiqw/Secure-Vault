@@ -26,7 +26,7 @@ public class SignupActivity extends AppCompatActivity {
         GLOBAL.enableImmersiveMode(this);
         dbHelper = new DatabaseHelper(this);
 
-        // Find views
+
         ImageView logo = findViewById(R.id.logo);
         EditText email = findViewById(R.id.email);
         EditText password = findViewById(R.id.password);
@@ -55,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
             } else if (!pass.equals(confirmPass)) {
                 Toast.makeText(SignupActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             } else {
-                // Hash the password
+
                 String hashedPassword = GLOBAL.hashPassword(pass);
 
                 if (hashedPassword == null) {
@@ -107,27 +107,23 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void AnimateUIElements(ImageView logo, EditText email, EditText password, EditText confirmPassword, Button signupButton, TextView alreadyHaveAccount) {
-        // Animate logo
+
         logo.setAlpha(0f);
         logo.animate().translationYBy(100f).alpha(1f).setDuration(800).setStartDelay(300).start();
 
-        // Animate email field
+
         email.setAlpha(0f);
         email.animate().alpha(1f).setDuration(600).setStartDelay(400).start();
 
-        // Animate password field
         password.setAlpha(0f);
         password.animate().alpha(1f).setDuration(600).setStartDelay(550).start();
 
-        // Animate confirm password field
         confirmPassword.setAlpha(0f);
         confirmPassword.animate().alpha(1f).setDuration(600).setStartDelay(700).start();
 
-        // Animate signup button
         signupButton.setAlpha(0f);
         signupButton.animate().alpha(1f).setDuration(600).setStartDelay(850).start();
 
-        // Animate "Already have an account" text
         alreadyHaveAccount.setAlpha(0f);
         alreadyHaveAccount.animate().alpha(1f).setDuration(600).setStartDelay(1000).start();
     }

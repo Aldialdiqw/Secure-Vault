@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         if (userId != -1) {
             fetchMemberships(userId);
         } else {
-            Log.d(TAG, "User ID invalid. Redirecting to LoginActivity.");
+
         }
     }
 
@@ -119,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void scheduleNotification(MembershipInfo membership) {
         if (notifiedMemberships.contains(membership.getId())) {
-            Log.d(TAG, "Notification already scheduled for membership: " + membership.getName());
+
             return;
         }
 

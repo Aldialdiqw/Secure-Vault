@@ -146,7 +146,7 @@ public boolean insertUser(String email, String password) {
             return false;
         }
 
-        String hashedPassword = GLOBAL.hashPassword(password);
+        String hashedPassword = password;
         if (hashedPassword == null) {
             Log.e("DB_ERROR", "Gabim gjatë krijimit të hash-it të fjalëkalimit.");
             return false;
@@ -179,9 +179,8 @@ public boolean insertUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 
-        String hashedPassword = GLOBAL.hashPassword(password);
+        String hashedPassword = password;
 
-        Log.d("DB_DEBUG", "Checking user: " + username + ", Hashed Password: " + hashedPassword);
 
         if (hashedPassword == null) {
             Log.e("DB_ERROR", "Gabim gjatë krijimit të hash-it të fjalëkalimit.");
@@ -192,12 +191,12 @@ public boolean insertUser(String email, String password) {
         Cursor cursor = db.rawQuery(query, new String[]{username});
 
         if (cursor != null && cursor.moveToFirst()) {
-            String dbHash = cursor.getString(0); // Merrni hash-in nga baza e të dhënave
+            String dbHash = cursor.getString(0);
             cursor.close();
 
 
             if (hashedPassword.equals(dbHash)) {
-                Log.d("DB_DEBUG", "Përdoruesi ekziston dhe hash-i përputhet.");
+
                 return true;
             } else {
                 Log.e("DB_DEBUG", "Hash-i nuk përputhet. Hash në DB: " + dbHash);
@@ -249,7 +248,7 @@ public boolean insertUser(String email, String password) {
             if (columnIndex >= 0) {
                 int userId = cursor.getInt(columnIndex);
                 cursor.close();
-                Log.d("", "user123123: " + userId);
+
                 return userId;
 
             }
@@ -267,21 +266,10 @@ public boolean insertUser(String email, String password) {
 
         try {
 
-            Log.d("DB_DEBUG", "Futja e të dhënave të kartës së kreditit për userId: " + userId);
-            Log.d("DB_DEBUG", "Emri: " + emri + ", CreditCardNumber: " + creditCardNumber + ", ExpirationDate: " + expirationDate + ", CVV: " + cvv);
-
-
             String encryptedEmri = CryptoUtils.encrypt(emri);
             String encryptedCreditCardNumber = CryptoUtils.encrypt(creditCardNumber);
             String encryptedExpirationDate = CryptoUtils.encrypt(expirationDate);
             String encryptedCvv = CryptoUtils.encrypt(cvv);
-
-
-            Log.d("DB_DEBUG", "Emri i enkriptuar: " + encryptedEmri);
-            Log.d("DB_DEBUG", "Numri i kartës së kreditit i enkriptuar: " + encryptedCreditCardNumber);
-            Log.d("DB_DEBUG", "Data e skadimit e enkriptuar: " + encryptedExpirationDate);
-            Log.d("DB_DEBUG", "CVV i enkriptuar: " + encryptedCvv);
-
 
             contentValues.put("emri", encryptedEmri);
             contentValues.put("creditcard_number", encryptedCreditCardNumber);
@@ -289,19 +277,19 @@ public boolean insertUser(String email, String password) {
             contentValues.put("ccv", encryptedCvv);
             contentValues.put("user_id", userId);
 
-            // Futja në bazën e të dhënave
+
             long result = db.insert("creditcard", null, contentValues);
 
-            // Log rezultati
+
             if (result != -1) {
-                Log.d("DB_DEBUG", "Kartë krediti u fut me sukses për userId: " + userId);
+
             } else {
-                Log.e("DB_DEBUG", "Dështoi futja e kartës së kreditit për userId: " + userId);
+
             }
 
             return result != -1;
         } catch (Exception e) {
-            // Log për gabime
+
             Log.e("DB_ERROR", "Gabim gjatë futjes së kartës së kreditit: ", e);
             e.printStackTrace();
             return false;
@@ -359,12 +347,6 @@ public boolean insertUser(String email, String password) {
             String encryptedPrice = CryptoUtils.encrypt(price);
             String encryptedDateDue = CryptoUtils.encrypt(date_due);
 
-            // Log the encrypted data
-            Log.d("ENCRYPTED_DATA", "Encrypted Membership Name: " + encryptedMembershipName);
-            Log.d("ENCRYPTED_DATA", "Encrypted Company Name: " + encryptedCompanyName);
-            Log.d("ENCRYPTED_DATA", "Encrypted Price: " + encryptedPrice);
-            Log.d("ENCRYPTED_DATA", "Encrypted Date Due: " + encryptedDateDue);
-
             contentValues.put("membershipName", encryptedMembershipName);
             contentValues.put("companyName", encryptedCompanyName);
             contentValues.put("price", encryptedPrice);
@@ -406,9 +388,8 @@ public boolean insertUser(String email, String password) {
             );
 
             if (rowsAffected > 0) {
-                Log.d("DatabaseHelper", "Updated payment date for membership ID: " + membershipId + " to " + newPaymentDate);
+
             } else {
-                Log.d("DatabaseHelper", "No rows updated for membership ID: " + membershipId);
             }
         } catch (Exception e) {
             Log.e("DatabaseHelper", "Error updating payment date: ", e);
@@ -460,11 +441,6 @@ public boolean insertUser(String email, String password) {
             String encryptedServiceName = CryptoUtils.encrypt(servicename);
             String encryptedUsername = CryptoUtils.encrypt(username);
             String encryptedPassword = CryptoUtils.encrypt(password);
-
-
-            Log.d("ENCRYPTED_DATA", "Encrypted Service Name: " + encryptedServiceName);
-            Log.d("ENCRYPTED_DATA", "Encrypted Username: " + encryptedUsername);
-            Log.d("ENCRYPTED_DATA", "Encrypted Password: " + encryptedPassword);
 
             contentValues.put("servicename", encryptedServiceName);
             contentValues.put("username", encryptedUsername);
@@ -537,9 +513,6 @@ public boolean insertUser(String email, String password) {
             String encryptedNote = CryptoUtils.encrypt(note);
 
 
-            Log.d("ENCRYPTED_DATA", "Encrypted Note Title: " + encryptedNoteTitle);
-            Log.d("ENCRYPTED_DATA", "Encrypted Note: " + encryptedNote);
-
             contentValues.put("notetitle", encryptedNoteTitle);
             contentValues.put("note", encryptedNote);
             contentValues.put("user_id", userId);
@@ -610,19 +583,6 @@ public boolean insertUser(String email, String password) {
             String encryptedCardId = CryptoUtils.encrypt(card_id);
             String encryptedResidence = CryptoUtils.encrypt(residence);
             String encryptedGender = CryptoUtils.encrypt(gender);
-
-
-            Log.d("ENCRYPTED_DATA", "Encrypted Full Name: " + encryptedFullName);
-            Log.d("ENCRYPTED_DATA", "Encrypted Personal ID: " + encryptedPersonalId);
-            Log.d("ENCRYPTED_DATA", "Encrypted Date of Birth: " + encryptedDateOfBirth);
-            Log.d("ENCRYPTED_DATA", "Encrypted Place of Birth: " + encryptedPlaceOfBirth);
-            Log.d("ENCRYPTED_DATA", "Encrypted Nationality: " + encryptedNationality);
-            Log.d("ENCRYPTED_DATA", "Encrypted Date of Issue: " + encryptedDateOfIssue);
-            Log.d("ENCRYPTED_DATA", "Encrypted Date of Expiry: " + encryptedDateOfExpiry);
-            Log.d("ENCRYPTED_DATA", "Encrypted Issued By: " + encryptedIssuedBy);
-            Log.d("ENCRYPTED_DATA", "Encrypted Card ID: " + encryptedCardId);
-            Log.d("ENCRYPTED_DATA", "Encrypted Residence: " + encryptedResidence);
-            Log.d("ENCRYPTED_DATA", "Encrypted Gender: " + encryptedGender);
 
             contentValues.put("user_id", id);
             contentValues.put("full_name", encryptedFullName);
@@ -700,10 +660,6 @@ public boolean insertUser(String email, String password) {
 
             String encryptedTitle = CryptoUtils.encrypt(title);
             String encryptedDescription = CryptoUtils.encrypt(description);
-
-
-            Log.d("ENCRYPTED_DATA", "Encrypted Title: " + encryptedTitle);
-            Log.d("ENCRYPTED_DATA", "Encrypted Description: " + encryptedDescription);
 
             contentValues.put("title", encryptedTitle);
             contentValues.put("description", encryptedDescription);

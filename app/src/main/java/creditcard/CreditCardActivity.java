@@ -33,11 +33,11 @@ public class CreditCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creditcardmanager);
         GLOBAL.enableImmersiveMode(this);
-        Log.d(TAG, "onCreate: Activity started");
+
 
         // Initialize the Add Card Button
         btnAddCard = findViewById(R.id.btn_add_card);
-        Log.d(TAG, "onCreate: Add card button initialized");
+
 
         // Set the button click listener
         btnAddCard.setOnClickListener(v -> {

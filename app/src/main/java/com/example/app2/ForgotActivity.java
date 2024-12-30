@@ -46,7 +46,9 @@ public class ForgotActivity extends AppCompatActivity {
 
         backToLogin.setOnClickListener(v -> {
             Intent intent = new Intent(ForgotActivity.this, LoginActivity.class);
+
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
 
         btnSend.setOnClickListener(v -> {
@@ -62,14 +64,9 @@ public class ForgotActivity extends AppCompatActivity {
                 return;
             }
 
-            // Generate the verification code
             verificationCode = generateVerificationCode();
             emailToVerify = email;
-
-            // Send the verification email
             sendVerificationEmail(email, verificationCode);
-
-            // Navigate to VerifyCodeActivity
             Intent intent = new Intent(ForgotActivity.this, VerifyCodeActivity.class);
             intent.putExtra("email", emailToVerify);
             intent.putExtra("code", verificationCode);

@@ -25,14 +25,14 @@ public class TwoFactorAuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_factor_auth);
 
-        // Initialize UI components
+       GLOBAL.enableImmersiveMode(this);
         verificationCodeInput = findViewById(R.id.verification_code_input);
         verifyButton = findViewById(R.id.verify_button);
 
-        // Retrieve SharedPreferences for session management
+
         sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
 
-        // Retrieve email and verification code from the intent
+
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("user_email");
         sentCode = intent.getStringExtra("verification_code");
@@ -40,7 +40,7 @@ public class TwoFactorAuthActivity extends AppCompatActivity {
         verifyButton.setOnClickListener(v -> {
             String enteredCode = verificationCodeInput.getText().toString();
 
-            // Check if the entered code matches the sent code
+
             if (enteredCode.isEmpty()) {
                 Toast.makeText(TwoFactorAuthActivity.this, "Please enter the verification code", Toast.LENGTH_SHORT).show();
             } else if (enteredCode.equals(sentCode)) {
@@ -52,7 +52,7 @@ public class TwoFactorAuthActivity extends AppCompatActivity {
         });
     }
 
-    // Handles logging in the user after successful verification
+
     private void loginUser() {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         int userId = dbHelper.getUserId(userEmail);
@@ -63,9 +63,9 @@ public class TwoFactorAuthActivity extends AppCompatActivity {
         editor.putInt("user_id", userId);
         editor.apply();
 
-        Log.d("TwoFactorAuthActivity", "User logged in: " + userEmail);
 
-        // Redirect to the HomeActivity
+
+
         Intent intent = new Intent(TwoFactorAuthActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();
