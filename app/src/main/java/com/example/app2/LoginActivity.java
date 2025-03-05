@@ -42,7 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         if (sharedPreferences.getBoolean("is_logged_in", false)) {
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
-            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
         }
 
         ImageView logo = findViewById(R.id.logo);
@@ -181,16 +182,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("is_logged_in", false);
-        editor.apply();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);
         Log.d("LoginActivity", "isLoggedIn: " + isLoggedIn);
 
@@ -216,6 +214,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void saveLoginSession(int userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("is_logged_in", true);
+        editor.putInt("user_id", userId);
+        editor.apply();
+    }
+
 
     public void onBackPressed() {
         if (shouldAllowBack()) {

@@ -43,7 +43,7 @@ public void onBindViewHolder(@NonNull ServiceAdapter.ViewHolder holder, int posi
 
 
     holder.btnDeleteMembership.setOnClickListener(v -> {
-        databaseHelper.deleteMembership(Service.getP_id());
+        databaseHelper.deletePassword(Service.getP_id());
 
         service.remove(position);
         notifyItemRemoved(position);

@@ -460,7 +460,7 @@ public boolean insertUser(String email, String password) {
 
     public void deletePassword(int passwordId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("password", "p_id = ?", new String[]{String.valueOf(passwordId)});
+        db.delete("passwords", "p_id = ?", new String[]{String.valueOf(passwordId)});
         db.close();
     }
 

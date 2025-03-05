@@ -3,6 +3,7 @@ package com.example.app2;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -27,12 +28,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView appName;
     private SQLiteDatabase db;
     private DatabaseHelper dbHelper;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         GLOBAL.enableImmersiveMode(this);
+        sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("is_logged_in", false)) {
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+        }
         try {
             CryptoUtils.generateKey();
         } catch (Exception e) {
@@ -42,23 +51,13 @@ public class MainActivity extends AppCompatActivity {
         btnSignup = findViewById(R.id.btn_signup);
         btnLogin = findViewById(R.id.btn_login);
         logo = findViewById(R.id.logo);
-
-
-
         dbHelper = new DatabaseHelper(this);
-
-
-
-
-
         logUsers();
-
-
         animateLogoAndAppName();
         animateButton(btnSignup);
         animateButtonWithDelay(btnLogin, 300);
 
-        // Set OnClickListeners
+
         btnLogin.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -80,17 +79,17 @@ public class MainActivity extends AppCompatActivity {
     private void logUsers() {
         Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM users", null);
 
-        // Check if cursor has data
+
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 try {
-                    // Ensure columns exist
+
                     int emailIndex = cursor.getColumnIndexOrThrow("email");
                     int passwordIndex = cursor.getColumnIndexOrThrow("password");
 
                     String email = cursor.getString(emailIndex);
                     String password = cursor.getString(passwordIndex);
-                    Log.d("DB_LOG", "User: " + email + ", Password: " + password);
+
                 } catch (IllegalArgumentException e) {
                     Log.e("DB_ERROR", "Column not found: " + e.getMessage());
                 }
@@ -104,11 +103,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Fade in logo and app name
+
 
 
     private void animateLogoAndAppName() {
-        // Fade-in effect for the logo
+
         AlphaAnimation fadeInLogo = new AlphaAnimation(0, 1);
         fadeInLogo.setDuration(1000);
         logo.startAnimation(fadeInLogo);
@@ -119,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         glowAnimator.setRepeatMode(ValueAnimator.REVERSE);
         glowAnimator.setRepeatCount(ValueAnimator.INFINITE);
         glowAnimator.start();
-        // Add a scaling effect to the logo (similar to button scaling)
-        ScaleAnimation scaleUp = new ScaleAnimation(1, 1f, 1, 1);  // Slight scale-up effect
+
+        ScaleAnimation scaleUp = new ScaleAnimation(1, 1f, 1, 1);
         scaleUp.setDuration(500);
         scaleUp.setRepeatMode(Animation.REVERSE);
         scaleUp.setRepeatCount(1);

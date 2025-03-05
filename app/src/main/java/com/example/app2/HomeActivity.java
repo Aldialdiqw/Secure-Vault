@@ -56,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         notifiedMemberships = loadNotifiedMemberships();
         GLOBAL.enableImmersiveMode(this);
 
+
+
         creditcard = findViewById(R.id.cards);
         memberships = findViewById(R.id.memberships);
         Securenotes = findViewById(R.id.Secure_Notes);

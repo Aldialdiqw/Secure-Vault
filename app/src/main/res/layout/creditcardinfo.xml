@@ -10,37 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:padding="16dp">
 
-
-            <!-- Card ID -->
+            <!-- Card ID (Invisible) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_card_id"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
-                android:fontFamily="@font/montserrat"
                 android:layout_height="wrap_content"
-                android:hint="Card ID"
-                app:layout_constraintEnd_toStartOf="@+id/til_cardholder_name"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.15">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_card_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-
-                    app:layout_constraintWidth_percent="0.2"/>
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Cardholder Name -->
@@ -52,14 +44,14 @@
                 android:fontFamily="@font/montserrat"
                 android:hint="Name on Card"
                 app:layout_constraintEnd_toStartOf="@+id/btn_delete_card"
-                app:layout_constraintStart_toEndOf="@id/til_card_id"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_cardholder_name"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/montserrat"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,8 +84,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_card_number"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/montserrat"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:inputType="number"
                     android:maxLength="16" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -115,8 +107,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_expiration_date"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/montserrat"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:inputType="date"
                     android:maxLength="5" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -128,6 +120,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="CVV"
+                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/til_expiration_date"
                 app:layout_constraintTop_toTopOf="@+id/til_expiration_date">
@@ -136,11 +129,12 @@
                     android:id="@+id/et_cvv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberPassword"
                     android:fontFamily="@font/montserrat"
+                    android:inputType="number"
                     android:maxLength="4" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

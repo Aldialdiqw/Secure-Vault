@@ -46,26 +46,18 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:background="@android:color/transparent"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_emblem"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_id_title"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@id/iv_emblem"
+                        app:layout_constraintStart_toEndOf="@+id/tv_id_title"
                         app:layout_constraintTop_toTopOf="parent"
                         android:textColor="@android:color/transparent"
                         />
 
-                    <ImageView
-                        android:id="@+id/iv_emblem"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="Government Emblem"
-                        android:src="@drawable/kosovoemblemvector"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_id_title"
-                        android:layout_width="232dp"
+                        android:layout_width="337dp"
                         android:layout_height="37dp"
                         android:fontFamily="@font/montserrat"
                         android:gravity="center"
@@ -73,24 +65,23 @@
                         android:text="National Identity Card"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_emblem"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_id"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@id/iv_emblem"
+                        app:layout_constraintStart_toEndOf="@id/tv_id"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.625" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <ImageView
                         android:id="@+id/iv_profile_picture"
                         android:layout_width="80dp"
-                        android:layout_height="84dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="109dp"
                         android:contentDescription="Profile Picture"
                         android:src="@drawable/person_48px"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/iv_emblem"
-                        app:layout_constraintVertical_bias="0.404" />
+                        app:layout_constraintTop_toTopOf="@+id/tv_id_title"
+                        app:layout_constraintVertical_bias="0.658" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -295,9 +286,10 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_delete_entry"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/montserrat"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Delete Entry" />
+                android:text="Delete" />
 
         </LinearLayout>
     </ScrollView>
